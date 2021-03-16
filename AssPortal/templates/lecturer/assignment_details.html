@@ -1,0 +1,46 @@
+{% extends 'base_generic.html' %}
+
+{% load static  %}
+
+{% block content %}
+    <div class="page-content">
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'lecturer/dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Assignment Details</li>
+        </ol>
+        </nav>
+    <div class="container-fluid" style = "margin-top:4%;">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+
+                <div class="card mb-3">
+                {% comment %} <img src="..." class="card-img-top" alt="..."> {% endcomment %}
+                <div class="card-body">
+                <h1 class="card-title" style = "text-align:center;color:grey;">Assignment Details</h1>
+                <h3><b>Matric No</b>: {{object.matric_no}}</h3>
+                <h3><b>Level</b>: {{object.level}}</h3>
+                <h3><b>Course Code</b>: {{object.course_code}}</h3>
+                <h3><b>Question</b>: {{object.question}}</h3>
+                <h3><b>Response / Reply</b>: {{object.response}}</h3>
+                {% if object.uploaded_content %}
+                    <h3><b>Uploaded Content</b>: <button class="btn btn-primary"><a download href="{{object.uploaded_content.url}}" style = "color:#fff;"><i class="fa fa-download"></i>Download</a></button></h3>
+                    {% else %}
+                    <h3><b>Uploaded Content</b>: No material(s) uploaded for {{object.course_code}}</h3>
+                {% endif %}
+                </div>
+                </div>
+                <hr style = "border: 1px solid black">
+                {% if object.is_accessed == False %}
+                <h3 style = " text-align:center;">Grade <a href = "{% url 'grade_assignment' object.slug %}">{{object.matric_no}}</a></h3>               
+                {% endif %}
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+    </div> <!-- end container-fluid -->
+    </div> <!-- end page-content -->
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block content %}
+           
+      <div class="container-fluid" style = "margin-top:4%;">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                <h3 style = "text-transform:uppercase; font-weight:bold">Are you sure you want to delete {{assignment.course_code}} - {{assignment.question}}</h3><br>
+                <form method = "POST" action = "">
+                    {% csrf_token %}
+                    <button class = "btn btn-danger" name = 'confirm' type = "submit"><a href = "{% url 'assignment_delete' assignment.id %}" style = "text-transform:uppercase; color:white;">Delete</a></button>&nbsp;
+                </form>
+                <button class = "btn btn-success" name = 'cancel'><a href = "{% url 'view_assignment' %}" style = "text-transform:uppercase; color:white;">Cancel</a></button>
+                </div>
+            </div>
+            </div>  
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+    </div> <!-- end container-fluid -->
+    </div> <!-- end page-content -->     
+
+{% endblock content %}

@@ -1,0 +1,99 @@
+{% extends 'base_generic.html' %}
+
+{% load static  %}
+
+{% block content %}
+    <div class="page-content">
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'lecturer/dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Grade Assignment</li>
+        </ol>
+        </nav>
+    <div class="container-fluid" style = "margin-top:4%;">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+
+                <form class="" action="" method = 'POST'>
+                    {% csrf_token %}
+                <div class="form-group">
+                        <label>Matric No</label>
+                        <div>
+                            <input class="form-control" name='matric_no' type="text" value="{{ qs.matric_no }}" 
+                            readonly>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label>Level</label>
+                        <div>
+                            <input class="form-control" name='level' type="text" value="{{ qs.level }}" 
+                            readonly>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label>Course Code</label>
+                        <div>
+                            <input class="form-control" name='course_code' type="text" value="{{ qs.course_code }}" 
+                            readonly>
+                        
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label>Question</label>
+                        <div>
+                            <input class="form-control" name='question' type="text" value="{{ qs.question }}" 
+                            readonly>
+                        
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label>Answer / Response</label>
+                        <div>
+                            <input class="form-control" name='response' type="text" value="{{ qs.response }}" 
+                            readonly>
+                        
+                        </div>
+                    </div> 
+                    
+                    <div class="form-group">
+                        <label>Score</label>
+                        <div>
+                         {{form.mark}}
+                        </div>
+                        {{form.errors.mark}}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Remarks</label>
+                        <div>
+                         {{form.remarks}}
+                        </div>
+                        {{form.errors.remarks}}
+                    </div>
+        
+                    
+                    <div class="form-group mb-0">
+                        <div>
+                            <button type="submit" class="btn btn-light waves-effect waves-light">
+                                Submit
+                            </button>
+                            <button type="reset" class="btn btn-danger waves-effect ml-1">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                    </form>
+                
+                   
+                       
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+    </div> <!-- end container-fluid -->
+    </div> <!-- end page-content -->
+
+{% endblock %}

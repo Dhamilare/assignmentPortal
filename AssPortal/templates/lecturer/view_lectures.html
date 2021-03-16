@@ -1,0 +1,76 @@
+{% extends 'base_generic.html' %}
+
+{% load static  %}
+
+{% block content %}
+    <div class="page-content">
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'lecturer/dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Lecture List</li>
+        </ol>
+        </nav>
+    <div class="container-fluid" style = "margin-top:4%;">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+
+                    {% for message in messages %}
+                             <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong style = 'text-transform:uppercase;'>{{message}}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        
+                        {% endfor %}
+                    <div class="table-responsive">
+                        <table id="example" class="table key-buttons text-md-nowrap">
+                            <thead>
+                            <tr>
+                                 <th>S/N</th>
+                                <th>Level</th>
+                                <th>Course Code</th>
+                                <th>Course Title</th>
+                                <th>Course Unit</th>
+                                 <th>Semester</th>
+                                <th>Material(s) / Handout(s)</th>
+                                <th>Posted By</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for lecture in lectures %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{lecture.level}}</td>
+                                <td>{{lecture.course_code}}</td>
+                                <td>{{lecture.course_title}}</td>
+                                <td>{{lecture.course_unit}}</td>
+                                <td>{{lecture.semester}}</td>
+                                    {% if lecture.handout %}
+                                <td><a href="{{lecture.handout.url}}">{{lecture.handout.url}}</a></td>
+                                {% else %}
+                                <td>Material(s) not included for {{lecture.course_code}}</td>
+                                {% endif %}
+                                <td>{{lecture.lecturer.first_name}}
+                                    {{lecture.lecturer.last_name}}
+                                </td>
+                                <td><a href = "{% url 'lecture_edit' lecture.slug %}" title = 'Edit'><i class="fas fa-edit"></i></a></td>
+
+                                {% endfor %}
+                            </tr>
+                        
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+    </div> <!-- end container-fluid -->
+    </div> <!-- end page-content -->
+
+{% endblock %}

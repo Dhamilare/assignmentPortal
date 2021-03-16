@@ -1,0 +1,85 @@
+{% extends 'base_generic.html' %}
+
+{% load static  %}
+
+{% block content %}
+        
+<div class="page-content">
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'lecturer/dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Lecture</li>
+        </ol>
+        </nav>
+    <div class="container-fluid" style = "margin-top:4%;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+
+                   <form class=""  method = 'POST' enctype = 'multipart/form-data'>
+                             {% csrf_token %}
+                             <div class="form-group">
+                                <label>Level</label>
+                                <div>
+                                {{form.level}}
+                                </div>
+                                {{form.errors.level}}
+                            </div>
+                            <div class="form-group">
+                                <label>Course Code</label>
+                                <div>
+                                    {{form.course_code}}
+                                </div>
+                                {{form.errors.course_code}}
+                            </div>
+                            <div class="form-group">
+                                <label>Course Title</label>
+                                <div>
+                                {{form.course_title}}
+                                </div>
+                                {{form.errors.course_title}}
+                            </div>
+                            <div class="form-group">
+                                <label>Course Unit</label>
+                                <div>
+                                 {{form.course_unit}}   
+                                </div>
+                                <small style = "font-family:cursive;color:green; text-transform:capitalize">Please Select Course Unit for selected Lecture</small>
+                                {{form.errors.course_unit}}
+                            </div>
+                             <div class="form-group">
+                                <label>Semester</label>
+                                <div>
+                                 {{form.semester}}   
+                                </div>
+                                {{form.errors.semester}}
+                            </div>
+                            <div class="form-group">
+                                <label>Material(s) / Handout(s)</label>
+                                <div>
+                                {{form.handout}}      
+                                </div>
+                                {{form.errors.handout}}
+                            </div>
+
+                            <div class="form-group mb-0">
+                                <div>
+                                    <button type="submit" class="btn btn-light waves-effect waves-light">
+                                        Submit
+                                    </button>
+                                    <button type="reset" class="btn btn-danger waves-effect ml-1">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+    </div> <!-- end container-fluid -->
+    </div> <!-- end page-content -->
+
+{% endblock content %}

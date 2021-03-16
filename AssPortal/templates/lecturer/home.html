@@ -1,0 +1,113 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block content %}
+           
+            {% comment %} <div class="col-lg-6 col-7">
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Default</li>
+                </ol>
+              </nav>
+            
+            </div> {% endcomment %}
+            <div class="col-xl-3 col-md-6" style ='margin-top:2%'>
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total Lectures</h5><br>
+                      <span class="h2 font-weight-bold mb-0">{{total_lecture}}</span>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-book-open fa-7x"></i>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-primary mr-2"><i class="fa fa-arrow-right"></i>&nbsp;<a href="{% url 'view_lectures' %}">View Details</a></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6" style ='margin-top:2%'>
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Posted Assignments</h5><br>
+                      <span class="h2 font-weight-bold mb-0">{{total_assignment}}</span>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-file-pdf fa-7x"></i>
+                    </div>
+                  </div>
+                  <p class="mt-4 mb-0 text-sm">
+                    <span class="text-primary mr-2"><i class="fa fa-arrow-right"></i>&nbsp;<a href="{% url 'view_assignment' %}">View Details</a></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+             <div class="col-xl-3 col-md-6" style ='margin-top:2%'>
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Received Assignment</h5><br>
+                      <span class="h2 font-weight-bold mb-0">{{submitted_assignment}}</span>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-bell fa-7x"></i>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-primary mr-2"><i class="fa fa-arrow-right"></i>&nbsp;<a href="{% url 'recieved_assignment' %}">View Details</a></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6" style ='margin-top:2%'>
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total Students</h5><br>
+                      <span class="h2 font-weight-bold mb-0">{{total_student}}</span>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-7x"></i>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-primary mr-2"><i class="fa fa-arrow-right"></i>&nbsp;<a href="{% url 'all_students' %}">View Details</a></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            {% comment %} <div class="col-xl-3 col-md-6" style ='margin-top:2%'>
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5><br>
+                      <span class="h2 font-weight-bold mb-0">49,65%</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                        <i class=""></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> {% endcomment %}
+
+          
+
+{% endblock content %}

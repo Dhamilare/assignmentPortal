@@ -1,0 +1,59 @@
+{% extends 'base_generic1.html' %}
+
+{% load static  %}
+
+{% block content %}
+    <div class="page-content">
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Course Mates</li>
+        </ol>
+        </nav>
+        <div class="container-fluid" style = "margin-top:4%;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table text-md-nowrap" id="example2">
+                            <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Matric No</th>
+                                <th>Level</th>
+                                 <th>Profile Photo</th>
+                                
+                            </tr>
+                            </thead>
+
+
+                            <tbody>
+                                {% for colleague in colleagues %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{colleague.first_name}}</td>
+                                <td>{{colleague.last_name}}</td>
+                                <td>{{colleague.matric_no}}</td>
+                                <td>{{colleague.level}}</td>
+                                {% if colleague.image %}
+                                <td><img class = "rounded-circle" src="{{colleague.image.url}}" width = "50px" height = "60px"></td>
+                                {% else %}
+                                <td><img class = "rounded-circle" src="images/download.png" width = "50px" height = "60px"></td>
+                                {% endif %}
+                                {% endfor %}
+                            </tr>
+                        
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+    </div> <!-- end container-fluid -->
+    </div> <!-- end page-content -->
+
+{% endblock %}

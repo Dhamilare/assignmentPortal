@@ -1,0 +1,108 @@
+{% extends 'base_generic.html' %}
+
+{% load static  %}
+
+{% block content %}
+        
+<div class="page-content">
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'lecturer/dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Update Lecture</li>
+        </ol>
+        </nav>
+        <div class="container-fluid" style = "margin-top:4%;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+
+                    {% for message in messages %}
+                             <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong style = 'text-transform:uppercase;'>{{message}}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        
+                        {% endfor %}
+                        
+                   <form class="" method = 'POST' enctype = 'multipart/form-data'>
+                             {% csrf_token %}
+                              <div class="form-group">
+                                <label>Level</label>
+                                <div>
+                                    {{update.level}}
+                                </div>
+                                {{update.errors.level}}
+                            </div>
+                            <div class="form-group">
+                                <label>Course Code</label>
+                                <div>
+                                    {{update.course_code}}
+                                </div>
+                                {{update.errors.course_code}}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Course Title</label>
+                                <div>
+                                {{update.course_title}}
+                                </div>
+                                {{update.errors.course_title}}
+                            </div>
+                            <div class="form-group">
+                                <label>Course Unit</label>
+                                <div>
+                                {{update.course_unit}}
+                                </div>
+                                {{update.errors.course_unit}}
+                            </div>
+                            <div class="form-group">
+                                <label>Semester</label>
+                                <div>
+                                 {{update.semester}}   
+                                </div>
+                                {{update.errors.semester}}
+                            </div>
+                            {% if form.materials %}
+                            <div class="form-group">
+                                <label>Material(s) / Handout(s)</label>
+                                <div>
+                                {{update.materials}}      
+                                </div>
+                                {{update.errors.materials}}
+                            </div>
+
+                            {% else %}
+
+                            <div class="form-group">
+                                <label>Material(s) / Handout(s)</label>
+                                <div>
+                                {{update.handout}}      
+                                </div>
+                                {{update.errors.handout}}
+                            </div>
+
+                            {% endif %}
+
+                            <div class="form-group mb-0">
+                                <div>
+                                    <button type="submit" class="btn btn-light waves-effect waves-light">
+                                        Submit
+                                    </button>
+                                    <button type="reset" class="btn btn-danger waves-effect ml-1">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+    </div> <!-- end container-fluid -->
+    </div> <!-- end page-content -->
+
+{% endblock content %}
